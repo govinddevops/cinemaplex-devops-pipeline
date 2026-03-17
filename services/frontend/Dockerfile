@@ -1,16 +1,9 @@
-# Stage 1: Builder
-FROM node:18-alpine AS builder
+FROM node:18-alpine AS production
+LABEL maintainer="govinddevopsdocker"
+LABEL description="Cinemaplex Frontend"
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --silent
 COPY . .
-RUN npm run build
-
-# Stage 2: Production
-FROM nginx:alpine AS production
-LABEL maintainer="govinddevopsdocker"
-LABEL description="Cinemaplex Frontend"
-COPY --from=builder /app/build /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 3000
+CMD ["npm", "start"]
