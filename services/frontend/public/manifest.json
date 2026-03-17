@@ -1,0 +1,8 @@
+{
+  "short_name": "Cinemaplex",
+  "name": "Cinemaplex DevOps Pipeline",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#141414",
+  "background_color": "#141414"
+}
